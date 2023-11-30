@@ -9,4 +9,8 @@ public class Floor extends Location{
         this(name, description);
         this.key = key;
     }
+
+    public Floor(){
+        this("<NAME UNKOWN>", "You have no idea where you are");
+    }
 }
