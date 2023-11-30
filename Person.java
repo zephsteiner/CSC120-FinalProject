@@ -13,7 +13,7 @@ public class Person {
         this.loc = loc;
     }
 
-    //acessors
+    //accessors
     public String getName(){
         return this.name;
     }

@@ -9,7 +9,7 @@ public class Item {
         this.helpWin = helpWin;
     }
 
-    //acessors
+    //accessors
     public boolean getHelpWin(){
         return this.helpWin;
     }
