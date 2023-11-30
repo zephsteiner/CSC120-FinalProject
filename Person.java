@@ -1,6 +1,6 @@
 public class Person {
-    String name;
-    Location loc;
+    protected String name;
+    protected Location loc;
 
     /** Default constructor */
     public Person() {
@@ -11,5 +11,14 @@ public class Person {
     public Person(String name, Location loc){
         this.name = name;
         this.loc = loc;
+    }
+
+    //acessors
+    public String getName(){
+        return this.name;
+    }
+
+    public Location getLocation(){
+        return this.loc;
     }
 }
