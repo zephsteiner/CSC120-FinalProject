@@ -15,7 +15,7 @@ public class Ghost extends Person {
         this.description = description;
     }
 
-    //acessors
+    //accessors
     public Item getItem(){
         return this.item;
     }
