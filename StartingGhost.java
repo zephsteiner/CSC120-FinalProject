@@ -7,7 +7,7 @@ public class StartingGhost extends Ghost {
     );
 
     public StartingGhost() {
-        super("Lily", null, new Item("book", "this is a book", false), "this is a starting ghost");
+        super("Lily", null, new Item("Your OneCard", "This is your key to the campus", false), "this is a starting ghost");
         //set these values
     }
 }

@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Protagonist extends Person {
     protected ArrayList<Item> inventory;
+    protected Location loc;
 
     public Protagonist() {
         super("you", null);

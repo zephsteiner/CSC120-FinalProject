@@ -22,7 +22,7 @@ public class Building extends Location{
 
     //methods
     public void addFloor(String name, String description, Item key, Integer floorNum){
-        Floor f = new Floor(name, description, key);
+        Floor f = new Floor(name, description, key, null);
         floors.put(floorNum, f);
     } 
 }
