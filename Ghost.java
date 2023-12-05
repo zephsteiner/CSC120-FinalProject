@@ -25,7 +25,7 @@ public class Ghost extends Person {
         System.out.println(description);
     }
 
-    public void giveItem(Protagonist p){
-        p.inventory.add(this.item);
+    public void give(Protagonist p){
+        p.pickUp(this.item);
     }
 }
