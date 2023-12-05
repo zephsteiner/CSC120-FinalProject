@@ -1,24 +1,28 @@
 import java.util.ArrayList;
+import com.google.common.graph.*;
 
 public class Game {
-    protected ArrayList<Location> map; // actually this is a graph
+    //protected ArrayList<Location> map; // actually this is a graph
     protected Protagonist player;
+    protected ImmutableGraph<Location> map;
 
 
     public Game() {
         //Protagonist player = new Protagonist();
         //StartingGhost lily = new StartingGhost(); 
 
-        // initialize the protagonist
-        // create the graph
+        // initialize the protagonist (z)
+        // create all the items (z)
+        // create all the dialogue (m)
+        // create the ghosts 
+        // create the locations
+        // create the graph of the locations
         // 
 
     }
 
     public void run() {
         // this should have dialogue and call the explore and add and such methods
-        //lily.give(player);
-
                 
 
         //exit the building you're currently in
