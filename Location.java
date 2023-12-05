@@ -3,7 +3,12 @@ public class Location {
     protected String description;
     protected Item key;
 
-    //acessors
+    public Location(){
+        this.name = "<NAME UNKOWN>";
+        this.description = "You have no idea where you are";
+    }
+
+    //accessors
     public String getName() {
         return this.name;
     }

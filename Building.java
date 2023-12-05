@@ -15,10 +15,6 @@ public class Building extends Location{
         this.key = key;
     }
 
-    public Building(){
-        this("<NAME UNKNOWN>", "You have no idea wwhere you are.");
-    }
-
     //accessors
     public Floor getFloor(Integer floorNum){
         return this.floors.get(floorNum);
