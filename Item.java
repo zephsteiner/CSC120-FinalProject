@@ -18,6 +18,10 @@ public class Item {
         return this.name;
     }
 
+    public String getDescription() {
+        return this.description;
+    }
+
     //methods
     public void examine(){
         System.out.println(this.description);
