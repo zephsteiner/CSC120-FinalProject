@@ -1,6 +1,8 @@
+import com.google.common.graph.*;
 public class Ghost extends Person {
     protected Item item;
     protected String description;
+    protected Graph dialouge; 
   
     /** Default constructor */
     public Ghost() {
