@@ -1,5 +1,13 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class StartingGhost extends Ghost {
-    ArrayList<String> hints;
+    ArrayList<String> hints = new ArrayList<>(
+        List.of("hint1", "hint2")
+    );
+
+    public StartingGhost() {
+        super("Lily", null, new Item("book", "this is a book", false), "this is a starting ghost");
+        //set these values
+    }
 }
