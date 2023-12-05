@@ -23,6 +23,10 @@ public class Item {
     }
 
     //methods
+    public String toString() {
+        return name + ", " + description;
+    }
+
     public void examine(){
         System.out.println(this.description);
     }
