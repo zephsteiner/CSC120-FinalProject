@@ -7,14 +7,18 @@ public class Game {
 
 
     public Game() {
-        //Protagonist player = new Protagonist();
-        //StartingGhost lily = new StartingGhost(); 
-
-        // initialize the protagonist (z)
         // create all the items (z)
+        Item oneCard = new Item("OneCard", "This is your key to the campus", false); //start
+        Item goatKey = new Item("key", "A heavy brass key", false); //goat
+        Item cake = new Item("chocolate cake", "A delicious looking chocolate cake", true); //julia, hubbard
+        Item waterGun = new Item("water gun", "A small neon green water pistol. It's empty.", true); //bugsy, parsons
+
+
+
         // create all the dialogue (m)
         // create the ghosts 
         // create the locations
+        // initialize the protagonist (z)
         // create the graph of the locations
         // 
 
