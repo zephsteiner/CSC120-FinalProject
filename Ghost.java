@@ -9,8 +9,8 @@ public class Ghost extends Person {
         this.description = "<YOU CAN'T SEE GHOSTS>";
     }
 
-    public Ghost(String name, Location loc, Item item, String description){
-        super(name, loc);
+    public Ghost(String name, Item item, String description){
+        super(name);
         this.item = item;
         this.description = description;
     }
@@ -27,5 +27,9 @@ public class Ghost extends Person {
 
     public void give(Protagonist p){
         p.pickUp(this.item);
+    }
+
+    public void talk() {
+        //smthn
     }
 }
