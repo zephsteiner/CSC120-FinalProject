@@ -24,5 +24,7 @@ public class Location {
         } else{
             throw new RuntimeException(this.name + "is locked!");
         }
+        //add check for if the location has a key in the first place
+        //maybe this should be called unlock?
     }
 }

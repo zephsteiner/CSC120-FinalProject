@@ -6,8 +6,8 @@ public class StartingGhost extends Ghost {
         List.of("hint1", "hint2")
     );
 
-    public StartingGhost() {
-        super("Lily", null, new Item("Your OneCard", "This is your key to the campus", false), "this is a starting ghost");
+    public StartingGhost(Item item) {
+        super("Lily", item, "A spectral woman in her mid-thirties");
         //set these values
     }
 }

@@ -4,8 +4,9 @@ public class Protagonist extends Person {
     protected ArrayList<Item> inventory;
     protected Location loc;
 
-    public Protagonist() {
-        super("you", null);
+    public Protagonist(Location location) {
+        super("you");
+        this.loc = location;
     }
 
     public void pickUp(Item i) {
@@ -29,6 +30,14 @@ public class Protagonist extends Person {
 
     public String examine(Item i) {
         return i.getDescription();
+    }
+
+    public void explore() {
+        //
+    }
+
+    public void talk(Person p) {
+        // dialogue time
     }
 
 

@@ -6,7 +6,7 @@ public class Person {
         this.name = "<NAME UNKNOWN>";
     }
 
-    public Person(String name, Location loc){
+    public Person(String name){
         this.name = name;
     }
 
