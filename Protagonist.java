@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 public class Protagonist extends Person {
     protected ArrayList<Item> inventory;
-    protected Location loc;
+    protected Floor loc;
 
-    public Protagonist(Location location) {
+    public Protagonist(Floor location) {
         super("you");
         this.loc = location;
     }

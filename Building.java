@@ -10,11 +10,6 @@ public class Building extends Location{
         this.floors = new Hashtable<>(5);
     }
 
-    public Building(String name, String description, Item key){
-        this(name, description);
-        this.key = key;
-    }
-
     public Building(String name){
         this(name, "Sure looks like a building.");
     }

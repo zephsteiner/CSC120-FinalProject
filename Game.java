@@ -8,7 +8,7 @@ public class Game {
     protected Hashtable<String,Building> map;
 
     public void enter(Building b, Protagonist p){
-        boolean unlocked = b.key == null | p.inventory.contains(b.key);
+        boolean unlocked = b.getFloor(1).key == null | p.inventory.contains(b.getFloor(1).key);
         boolean ground = p.loc.getFloorNum() == 1;
         if(unlocked && ground){
             p.loc = b.getFloor(1);
@@ -25,6 +25,18 @@ public class Game {
         enter(b, p);
     }
 
+    //creates a building a it's 1st floor and adds it to the map
+    //all addtional floors need to be made using one of the Building.addFloor() methods
+    private void addBuilding(String name){
+        this.map.put(name, new Building(name));
+        this.map.get(name).addFloor(1);
+    }
+
+    private void addBuilding(String name, String bDescription, String gfDescription, Item gfKey, Ghost gfGhost){
+        this.map.put(name, new Building(name, bDescription));
+        this.map.get(name).addFloor(gfDescription, gfKey, gfGhost, 1);
+    }
+
     public Game() {
         // create all the items (z)
         Item oneCard = new Item("OneCard", "This is your key to the campus", false); //start
@@ -37,19 +49,19 @@ public class Game {
         // create the ghosts 
         // create the locations
         this.map = new Hashtable<>();
-        this.map.put("Seelye", new Building("Seelye"));
-        this.map.put("Washburn", new Building("Washburn"));
-        this.map.put("McConnell", new Building("McConnell"));
-        this.map.put("Park",new Building("Park"));
-        this.map.put("Sessions", new Building("Sessions"));
-        this.map.put("Mendenhall", new Building("Mendenhall"));
-        this.map.put("Parsons", new Building("Parsons"));
-        this.map.put("Northrop", new Building("Northrop"));
-        this.map.put("Chapin", new Building("Chapin"));
-        this.map.put("Tyler", new Building("Tyler"));
-        this.map.put("Hubbard", new Building("Hubbard"));
-        this.map.put("Comstock", new Building("Comstock"));
-        this.map.put("Outside", new Building("Outside"));
+        this.addBuilding("Seeyle");
+        this.addBuilding("Washburn");
+        this.addBuilding("McConnell");
+        this.addBuilding("Park");
+        this.addBuilding("Sessions");
+        this.addBuilding("Mendenhall");
+        this.addBuilding("Parsons");
+        this.addBuilding("Northrop");
+        this.addBuilding("Chapin");
+        this.addBuilding("Tyler");
+        this.addBuilding("Hubbard");
+        this.addBuilding("Comstock");
+        this.addBuilding("Outside");
         // initialize the protagonist (z)
         // create the graph of the locations
         // 
