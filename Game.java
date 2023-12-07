@@ -3,7 +3,6 @@ import java.util.Hashtable;
 //import com.google.common.graph.*;
 
 public class Game {
-    //protected ArrayList<Location> map; // actually this is a graph
     protected Protagonist player;
     protected Hashtable<String,Building> map;
 
@@ -50,6 +49,9 @@ public class Game {
         // create the locations
         this.map = new Hashtable<>();
         this.addBuilding("Seeyle");
+        this.map.get("Seeyle").addFloor(2);
+        this.map.get("Seeyle").addFloor(3);
+        this.map.get("Seeyle").addFloor(4); //lily is here
         this.addBuilding("Washburn");
         this.addBuilding("McConnell");
         this.addBuilding("Park");
@@ -62,6 +64,8 @@ public class Game {
         this.addBuilding("Hubbard");
         this.addBuilding("Comstock");
         this.addBuilding("Outside");
+
+        Protagonist player = new Protagonist(this.map.get("Seeyle").getFloor(4));
         // initialize the protagonist (z)
         // create the graph of the locations
         // 

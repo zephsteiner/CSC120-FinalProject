@@ -34,4 +34,8 @@ public class Ghost extends Person {
     public void talk() {
         //smthn
     }
+
+    public void addDialogue(Graph g){
+        this.dialouge = g;
+    }
 }
