@@ -3,10 +3,10 @@ public class Location {
     protected String description;
     protected Item key;
 
-    public Location(){
-        this.name = "<NAME UNKOWN>";
-        this.description = "You have no idea where you are";
-    }
+    // public Location(){
+    //     this.name = "<NAME UNKOWN>";
+    //     this.description = "You have no idea where you are";
+    // }
 
     //accessors
     public String getName() {
@@ -18,8 +18,11 @@ public class Location {
     }
 
     //methods
-    public void lookAround(Protagonist p){
-        if(p.inventory.contains(this.key)){
+    public void printDescription(Protagonist p){
+        if(this.key == null){
+           System.out.println(this.description); 
+        }
+        else if(p.inventory.contains(this.key)){
             System.out.println(this.description);
         } else{
             throw new RuntimeException(this.name + "is locked!");
