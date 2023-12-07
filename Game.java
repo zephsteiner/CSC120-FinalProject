@@ -52,9 +52,18 @@ public class Game {
         this.map.get("Seeyle").addFloor(2);
         this.map.get("Seeyle").addFloor(3);
         this.map.get("Seeyle").addFloor(4); //lily is here
+        Protagonist player = new Protagonist(this.map.get("Seeyle").getFloor(4));
         this.addBuilding("Washburn");
+        this.map.get("Washburn").addFloor(2);
+        this.map.get("Washburn").addFloor(3);
         this.addBuilding("McConnell");
+        this.map.get("McConnell").addFloor(2);
+        this.map.get("McConnell").addFloor(3);
+        this.map.get("McConnell").addFloor(4);
         this.addBuilding("Park");
+        this.map.get("Park").addFloor(2);
+        this.map.get("Park").addFloor(3);
+        this.map.get("Park").addFloor(4);
         this.addBuilding("Sessions");
         this.addBuilding("Mendenhall");
         this.addBuilding("Parsons");
@@ -64,8 +73,6 @@ public class Game {
         this.addBuilding("Hubbard");
         this.addBuilding("Comstock");
         this.addBuilding("Outside");
-
-        Protagonist player = new Protagonist(this.map.get("Seeyle").getFloor(4));
         // initialize the protagonist (z)
         // create the graph of the locations
         // 
