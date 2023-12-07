@@ -2,23 +2,25 @@ public class Floor extends Location{
     protected Ghost ghost;
     protected Integer floorNum;
     protected Building building;
+    protected Item item;
 
-    public Floor(String description, Ghost ghost, Integer floorNum, Building building){
+    public Floor(String description, Ghost ghost, Integer floorNum, Building building, Item item){
         this.name = building + " " + Integer.toString(floorNum);
         this.description = description;
         this.ghost = ghost;
         this.floorNum = floorNum;
         this.building = building;
+        this.item = item;
         this.key = null;
     }
 
     public Floor(String description, Item key, Ghost ghost, Integer floorNum, Building building){
-        this(description, ghost, floorNum, building);
+        this(description, ghost, floorNum, building, null);
         this.key = key;
     }
 
     public Floor(Integer floorNum, Building building){
-        this("Wow it sure is inside in here", null, floorNum, building);
+        this("Wow it sure is inside in here", null, floorNum, building, null);
     }
 
     //methods

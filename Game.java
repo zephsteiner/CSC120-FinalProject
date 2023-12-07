@@ -69,8 +69,10 @@ public class Game {
     }
 
     public void run() {
+        //scannnerrrrrrr
+        
         // this should have dialogue and call the explore and add and such methods
-                
+        
 
         //exit the building you're currently in
 
