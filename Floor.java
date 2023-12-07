@@ -50,12 +50,16 @@ public class Floor extends Location{
         }
     }
 
-    // public void leave(Protagonist p){
-    //     if(this.floorNum != 1){
-    //         throw new RuntimeException("You can't leave from floor " + Integer.toString(floorNum) + ". Go to the first floor.");
-    //     } else{
-    //         p.loc = Outside;
-    //         //i don't know how to get this to point to outside without having to make an instance in the floor class
-    //     }
-    // }
+    public void leave(Protagonist p){
+        if(this.floorNum != 1){
+            throw new RuntimeException("You can't leave from floor " + Integer.toString(floorNum) + ". Go to the first floor.");
+        } else{
+            p.loc = Outside;
+            //i don't know how to get this to point to outside without having to make an instance in the floor class
+        }
+    }
+
+    public void addGhost(Ghost g) {
+        this.ghost = g;
+    }
 }
