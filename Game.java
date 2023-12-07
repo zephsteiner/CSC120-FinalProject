@@ -5,8 +5,25 @@ import java.util.Hashtable;
 public class Game {
     //protected ArrayList<Location> map; // actually this is a graph
     protected Protagonist player;
-    protected Hashtable<String,Location> map;
+    protected Hashtable<String,Building> map;
 
+    public void enter(Building b, Protagonist p){
+        boolean unlocked = b.key == null | p.inventory.contains(b.key);
+        boolean ground = p.loc.getFloorNum() == 1;
+        if(unlocked && ground){
+            p.loc = b.getFloor(1);
+            b.getFloor(1).printDescription();
+        } else if(!unlocked && ground){
+            throw new RuntimeException("This building is locked.");
+        } else if(!ground){
+            throw new RuntimeException("You cannot leave a building from floor " + Integer.toString(p.loc.getFloorNum()) + ". Please go to floor 1.");
+        }
+    }
+
+    public void enter(String building, Protagonist p){
+        Building b = this.map.get(building);
+        enter(b, p);
+    }
 
     public Game() {
         // create all the items (z)
@@ -32,7 +49,7 @@ public class Game {
         this.map.put("Tyler", new Building("Tyler"));
         this.map.put("Hubbard", new Building("Hubbard"));
         this.map.put("Comstock", new Building("Comstock"));
-        this.map.put("Outside", new Location("Outside"));
+        this.map.put("Outside", new Building("Outside"));
         // initialize the protagonist (z)
         // create the graph of the locations
         // 

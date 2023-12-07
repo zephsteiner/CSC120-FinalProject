@@ -26,6 +26,10 @@ public class Floor extends Location{
         return this.ghost;
     }
 
+    public Integer getFloorNum(){
+        return this.floorNum;
+    }
+
     public void goUp(Protagonist p){
         Floor up = this.building.getFloor(this.floorNum + 1);
         if(!this.building.getFloors().containsKey(this.floorNum+1)){
@@ -47,15 +51,6 @@ public class Floor extends Location{
             down.printDescription(); 
         } else{
             throw new RuntimeException("The floor below you is locked!");
-        }
-    }
-
-    public void leave(Protagonist p){
-        if(this.floorNum != 1){
-            throw new RuntimeException("You can't leave from floor " + Integer.toString(floorNum) + ". Go to the first floor.");
-        } else{
-            p.loc = Outside;
-            //i don't know how to get this to point to outside without having to make an instance in the floor class
         }
     }
 
