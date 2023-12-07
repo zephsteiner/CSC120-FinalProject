@@ -24,10 +24,29 @@ public class Building extends Location{
         return this.floors.get(floorNum);
     }
 
+    public Hashtable<Integer, Floor> getFloors(){
+        return this.floors;
+    }
+
     //methods
-    public void addFloor(String name, String description, Item key, Integer floorNum){
-        Floor f = new Floor(name, description, key, null);
+    protected void addFloor(String description, Item key, Ghost ghost, Integer floorNum){
+        Floor f = new Floor(description, key, ghost, floorNum, this);
+        floors.put(floorNum, f);
+    }
+
+    protected void addFloor(String description, Ghost ghost, Integer floorNum){
+        Floor f = new Floor(description, ghost, floorNum, this);
+        floors.put(floorNum, f);
+    }
+
+    protected void addFloor(String description, Item key, Integer floorNum){
+        Floor f = new Floor(description, key, null, floorNum, this);
         floors.put(floorNum, f);
     } 
+
+    protected void addFloor(Integer floorNum){
+        Floor f = new Floor(floorNum, this);
+        floors.put(floorNum, f);
+    }
 }
   
