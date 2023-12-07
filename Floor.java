@@ -1,8 +1,8 @@
 public class Floor extends Location{
-    protected Ghost ghost;
+    public Ghost ghost;
     protected Integer floorNum;
-    protected Building building;
-    protected Item item;
+    public Building building;
+    public Item item;
 
     public Floor(String description, Item key, Ghost ghost, Item item, Integer floorNum, Building building){
         this.name = building + " " + Integer.toString(floorNum);
@@ -19,10 +19,6 @@ public class Floor extends Location{
     }
 
     //methods
-    public Ghost getGhost(){
-        return this.ghost;
-    }
-
     public Integer getFloorNum(){
         return this.floorNum;
     }
