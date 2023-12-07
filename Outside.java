@@ -26,11 +26,6 @@ public class Outside extends Location {
         return this.map;
     }
 
-    private void addToMap(String name, String description, Item key){
-        Building b = new Building(name, description, key);
-        this.map.put(b.name, b);
-    }
-
     private void addToMap(String name, String description){
         Building b = new Building(name, description);
         this.map.put(b.name, b);
