@@ -31,10 +31,6 @@ public class Game {
         this.map.get(name).addFloor(1);
     }
 
-    private void addBuilding(String name, String bDescription, String gfDescription, Item gfKey, Ghost gfGhost){
-        this.map.put(name, new Building(name, bDescription));
-        this.map.get(name).addFloor(gfDescription, gfKey, gfGhost, 1);
-    }
 
     public Game() {
         // create all the items (z)
