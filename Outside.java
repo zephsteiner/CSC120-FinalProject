@@ -15,7 +15,7 @@ public class Outside extends Location {
         this.addToMap("mendenhal");
         this.addToMap("parsons");
         this.addToMap("Northrop");
-        this.addToMap("Cahpin");
+        this.addToMap("Chapin");
         this.addToMap("Tyler");
         this.addToMap("Hubbard");
         this.addToMap("Comstock");
