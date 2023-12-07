@@ -26,15 +26,16 @@ public class Game {
 
     //creates a building a it's 1st floor and adds it to the map
     //all addtional floors need to be made using one of the Building.addFloor() methods
-    private void addBuilding(String name){
-        this.map.put(name, new Building(name));
+    private Building addBuilding(String name){
+        Building b = new Building(name);
+        this.map.put(name, b);
         this.map.get(name).addFloor(1);
+        return b;
     }
 
 
     public Game() {
         // create all the items (z)
-        Item oneCard = new Item("OneCard", "This is your key to the campus", false); //start
         Item goatKey = new Item("key", "A heavy brass key", false); //goat
         Item cake = new Item("chocolate cake", "A delicious looking chocolate cake", true); //julia, hubbard
         Item waterGun = new Item("water gun", "A small neon green water pistol. It's empty.", true); //bugsy, parsons
@@ -44,22 +45,29 @@ public class Game {
         // create the ghosts 
         // create the locations
         this.map = new Hashtable<>();
-        this.addBuilding("Seeyle");
-        this.map.get("Seeyle").addFloor(2);
-        this.map.get("Seeyle").addFloor(3);
-        this.map.get("Seeyle").addFloor(4); //lily is here
-        Protagonist player = new Protagonist(this.map.get("Seeyle").getFloor(4));
-        this.addBuilding("Washburn");
-        this.map.get("Washburn").addFloor(2);
-        this.map.get("Washburn").addFloor(3);
-        this.addBuilding("McConnell");
-        this.map.get("McConnell").addFloor(2);
-        this.map.get("McConnell").addFloor(3);
-        this.map.get("McConnell").addFloor(4);
-        this.addBuilding("Park");
-        this.map.get("Park").addFloor(2);
-        this.map.get("Park").addFloor(3);
-        this.map.get("Park").addFloor(4);
+
+        Building seelye =  this.addBuilding("Seeyle");
+        seelye.addFloor(2);
+        seelye.setItem(2, new Item("key", "It's a key", false));
+        seelye.addFloor(3);
+        seelye.addFloor(4);
+        seelye.setGhost(5, new StartingGhost(new Item("OneCard", "This is your key to the campus", false)));
+        this.player =  new Protagonist(seelye.getFloor(4));
+
+        Building wburn = this.addBuilding("Washburn");
+        wburn.addFloor(2);
+        wburn.addFloor(3);
+
+        Building mcl = this.addBuilding("McConnell");
+        mcl.addFloor(2);
+        mcl.addFloor(3);
+        mcl.addFloor(4);
+
+        Building park = this.addBuilding("Park");
+        park.addFloor(2);
+        park.addFloor(3);
+        park.addFloor(4);
+
         this.addBuilding("Sessions");
         this.addBuilding("Mendenhall");
         this.addBuilding("Parsons");
