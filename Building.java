@@ -24,21 +24,28 @@ public class Building extends Location{
     }
 
     //methods
+    // key, ghost and item
+    protected void addFloor(String description, Item key, Ghost ghost, Item item,Integer floorNum){
+        Floor f = new Floor(description, key, ghost, item, floorNum, this);
+        floors.put(floorNum, f);
+    }
+
+    // key and ghost
     protected void addFloor(String description, Item key, Ghost ghost, Integer floorNum){
-        Floor f = new Floor(description, key, ghost, floorNum, this);
-        floors.put(floorNum, f);
+        addFloor(description, key, ghost, null, floorNum);
     }
 
-    protected void addFloor(String description, Ghost ghost, Integer floorNum){
-        Floor f = new Floor(description, ghost, floorNum, this);
-        floors.put(floorNum, f);
+    // ghost and item
+    protected void addFloor(String description, Ghost ghost, Item item, Integer floorNum){
+        addFloor(description, null, ghost, item, floorNum);
     }
 
-    protected void addFloor(String description, Item key, Integer floorNum){
-        Floor f = new Floor(description, key, null, floorNum, this);
-        floors.put(floorNum, f);
-    } 
+    // key and item
+    protected void addFloor(String description, Item key, Item item, Integer floorNum){
+        addFloor(description, key, null, item, floorNum);
+    }
 
+    //none of it
     protected void addFloor(Integer floorNum){
         Floor f = new Floor(floorNum, this);
         floors.put(floorNum, f);
