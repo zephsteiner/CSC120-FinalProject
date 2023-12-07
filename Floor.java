@@ -12,5 +12,4 @@ public class Floor extends Location{
         this(name, description, ghost);
         this.key = key;
     }
-
 }

@@ -15,6 +15,10 @@ public class Building extends Location{
         this.key = key;
     }
 
+    public Building(String name){
+        this(name, "Sure looks like a building.");
+    }
+
     //accessors
     public Floor getFloor(Integer floorNum){
         return this.floors.get(floorNum);
