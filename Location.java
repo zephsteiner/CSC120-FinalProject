@@ -30,4 +30,8 @@ public class Location {
         //add check for if the location has a key in the first place
         //maybe this should be called unlock?
     }
+
+    public void printDescription(){
+        System.out.println(this.description);
+    }
 }

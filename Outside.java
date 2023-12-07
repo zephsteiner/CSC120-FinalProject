@@ -42,10 +42,16 @@ public class Outside extends Location {
     }
 
     public void enter(Building b, Protagonist p){
-        p.loc = b.getFloor(1);
+        if(b.key == null | p.inventory.contains(b.key)){
+            p.loc = b.getFloor(1);
+            b.getFloor(1).printDescription();
+        } else{
+            throw new RuntimeException("This building is locked.");
+        }
     }
 
     public void enter(String building, Protagonist p){
-        p.loc = this.map.get(building).getFloor(1);
+        Building b = this.map.get(building);
+        enter(b, p);
     }
 }
