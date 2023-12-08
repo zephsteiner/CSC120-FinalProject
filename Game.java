@@ -36,11 +36,6 @@ public class Game {
 
     public Game() {
         // create all the items (z)
-        Item goatKey = new Item("key", "A heavy brass key", false); //goat
-        Item cake = new Item("chocolate cake", "A delicious looking chocolate cake", true); //julia, hubbard
-        Item waterGun = new Item("water gun", "A small neon green water pistol. It's empty.", true); //bugsy, parsons
-
-
         // create all the dialogue (m)
         // create the ghosts 
         // create the locations
@@ -64,12 +59,22 @@ public class Game {
 
         Building mcl = this.addBuilding("McConnell");
         mcl.addFloor(2);
+        mcl.setItem(2, new Item(
+            "living squirrel (regular)", "What it says on the tin. This is a normal, alive squirrel", false, false));
         mcl.addFloor(3);
+        mcl.setKey(3, this.map.get("Sessions").getFloor(3).getItem());
+        mcl.setGhost(3, new Ghost("Bruno", 
+            new Item("eclipse glasses", "It is important to stay safe when viewing the sun", true), 
+            "THE it-girl of a mad scientist"));
         mcl.addFloor(4);
 
         Building park = this.addBuilding("Park");
         park.addFloor(2);
+        park.setGhost(2, new Ghost("Jeanne", 
+            new Item("a variety of teabags", "The guests will appreciate this; tea really elevates any event", true), 
+            "A young woman with a wavering voice and quick eyes"));
         park.addFloor(3);
+        park.setItem(3, new Item("small jar", "a small mason jar filled with a mysterious clear liquid", false));
         park.addFloor(4);
 
         Building sessions = this.addBuilding("Sessions");
@@ -77,14 +82,50 @@ public class Game {
             new Item("bowl of chips", "Mmm. Crunchy. Do you prefer salsa or guac?", true), 
             "He's wearing a soldier's uniform. You think he looks tired."));
         sessions.addFloor(2);
+        sessions.setKey(2, this.map.get("Northrop").getFloor(1).getItem());
         sessions.addFloor(3);
+        sessions.setGhost(3, new Ghost("Lucy", 
+            new Item("glitter", "This gets everywhere...", true), 
+            "Her eyes are far away and her face is drawn"));
+        sessions.setItem(3, new Item("key", "It's a key", false)); //mcconnell 3
 
-        this.addBuilding("Mendenhall");
-        this.addBuilding("Parsons");
-        this.addBuilding("Northrop");
+        Building mhall = this.addBuilding("Mendenhall");
+        mhall.addFloor(2);
+        mhall.setItem(2, new Item("apple", "Goats like these", false));
+        mhall.setGhost(2, new GoatGhost(new Item("key", "This must be the key to the party", true)));
+        mhall.addFloor(3);
+
+        Building psons = this.addBuilding("Parsons");
+        psons.addFloor(2);
+        psons.setGhost(2, new Ghost("Bugsy", 
+            new Item("water gun", "A small neon green water pistol. It's empty.", true), 
+            "A tough looking man in a three-piece suit and a hat"));
+        psons.addFloor(3);
+
+        Building northrop = this.addBuilding("Northrop");
+        northrop.setItem(1, new Item("key", "It's a key", false)); //sessions 2
+        northrop.addFloor(2);
+        northrop.setKey(2, this.map.get("Washburn").getFloor(1).getItem());
+        northrop.setGhost(2, new Ghost("Francine", 
+            new Item("pack of Camel brand cigarettes", "There are a few missing", true), 
+            "You can barely make out her form. She creaks when she moves"));
+        northrop.addFloor(3);
+        northrop.addFloor(4);
+        northrop.addFloor(5);
+        northrop.setItem(5, new Item("key", "It's a key", false)); //hubbard 2
+
         this.addBuilding("Chapin");
         this.addBuilding("Tyler");
-        this.addBuilding("Hubbard");
+
+        Building hubbard = this.addBuilding("Hubbard");
+        hubbard.addFloor(2);
+        hubbard.setGhost(2, new Ghost("Julia", 
+            new Item("chocolate cake", "A delicious looking chocolate cake", true), 
+            "Is that... Julia Child?"));
+        hubbard.addFloor(3);
+        hubbard.addFloor(4);
+
+
         this.addBuilding("Comstock");
         this.addBuilding("Outside");
         // initialize the protagonist (z)
@@ -116,3 +157,6 @@ public class Game {
 
     }
 }
+
+//notes: should we label the keys lol
+//i am loving the fact that the large slime jar is, in fact, useable at the party whereas small is not
