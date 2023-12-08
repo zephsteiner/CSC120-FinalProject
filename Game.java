@@ -48,14 +48,18 @@ public class Game {
 
         Building seelye =  this.addBuilding("Seeyle");
         seelye.addFloor(2);
-        seelye.setItem(2, new Item("key", "It's a key", false));
+        seelye.setItem(2, new Item("key", "It's a key", false)); //comstock 2
         seelye.addFloor(3);
         seelye.addFloor(4);
         seelye.setGhost(5, new StartingGhost(new Item("OneCard", "This is your key to the campus", false)));
         this.player =  new Protagonist(seelye.getFloor(4));
 
         Building wburn = this.addBuilding("Washburn");
+        wburn.setItem(1, new Item("key", "It's a key", false)); //northrop 2
         wburn.addFloor(2);
+        wburn.setGhost(2, new Ghost("Madeline", 
+            new Item("bowl of guacamole", "Looks tasty. Would pair well with chips", true), 
+            "A girl in her early teens wearing a white dress. This strikes you as rather too on the nose for a ghost."));
         wburn.addFloor(3);
 
         Building mcl = this.addBuilding("McConnell");
@@ -68,7 +72,13 @@ public class Game {
         park.addFloor(3);
         park.addFloor(4);
 
-        this.addBuilding("Sessions");
+        Building sessions = this.addBuilding("Sessions");
+        sessions.setGhost(1, new Ghost("John", 
+            new Item("bowl of chips", "Mmm. Crunchy. Do you prefer salsa or guac?", true), 
+            "He's wearing a soldier's uniform. You think he looks tired."));
+        sessions.addFloor(2);
+        sessions.addFloor(3);
+
         this.addBuilding("Mendenhall");
         this.addBuilding("Parsons");
         this.addBuilding("Northrop");
