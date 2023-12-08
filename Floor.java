@@ -18,6 +18,10 @@ public class Floor extends Location{
         this("Wow it sure is inside in here", null, null, null, floorNum, building);
     }
 
+    public Item getItem() {
+        return this.item;
+    }
+
     //methods
     public Integer getFloorNum(){
         return this.floorNum;
