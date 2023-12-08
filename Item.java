@@ -2,11 +2,17 @@ public class Item {
     private String name;
     private String description;
     private boolean helpWin;
+    private boolean canPickUp = true;
 
     public Item(String name, String description, boolean helpWin){
         this.name = name;
         this.description = description;
         this.helpWin = helpWin;
+    }
+
+    public Item(String name, String description, boolean helpWin, boolean pickUp) {
+        this(name, description, helpWin);
+        this.canPickUp = pickUp;
     }
 
     //accessors
@@ -16,6 +22,10 @@ public class Item {
 
     public String getName(){
         return this.name;
+    }
+
+    public boolean getCanPickUp() {
+        return this.canPickUp;
     }
 
     public String getDescription() {
