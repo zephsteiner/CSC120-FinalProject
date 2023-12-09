@@ -3,8 +3,10 @@ import java.util.Hashtable;
 //import com.google.common.graph.*;
 
 public class Game {
-    protected Protagonist player;
+    protected Protagonist p;
     protected Hashtable<String,Building> map;
+
+
 
     public void enter(Building b, Protagonist p){
         boolean unlocked = b.getFloor(1).key == null | p.inventory.contains(b.getFloor(1).key);
@@ -26,6 +28,12 @@ public class Game {
 
     //creates a building a it's 1st floor and adds it to the map
     //all addtional floors need to be made using one of the Building.addFloor() methods
+    /**
+     * Creates a Building object with one floor and adds it to the game's map.
+     * Add more floors with Building.addFloor(...)
+     * @param name The name of the Building to be added
+     * @return The Building added
+     */
     private Building addBuilding(String name){
         Building b = new Building(name);
         this.map.put(name, b);
@@ -47,7 +55,7 @@ public class Game {
         seelye.addFloor(3);
         seelye.addFloor(4);
         seelye.setGhost(5, new StartingGhost(new Item("OneCard", "This is your key to the campus", false)));
-        this.player =  new Protagonist(seelye.getFloor(4));
+        this.p =  new Protagonist(seelye.getFloor(4));
 
         Building wburn = this.addBuilding("Washburn");
         wburn.setItem(1, new Item("key", "It's a key", false)); //northrop 2
@@ -94,8 +102,10 @@ public class Game {
         mhall.setItem(2, new Item("apple", "Goats like these", false));
         mhall.setGhost(2, new GoatGhost(new Item("key", "This must be the key to the party", true)));
         mhall.addFloor(3);
+        mhall.setKey(3, this.map.get("Parsons").getFloor(1).getItem());
 
         Building psons = this.addBuilding("Parsons");
+        psons.setItem(1, new Item("key", "It's a key", false)); //mhall 3
         psons.addFloor(2);
         psons.setGhost(2, new Ghost("Bugsy", 
             new Item("water gun", "A small neon green water pistol. It's empty.", true), 
@@ -114,23 +124,37 @@ public class Game {
         northrop.addFloor(5);
         northrop.setItem(5, new Item("key", "It's a key", false)); //hubbard 2
 
-        this.addBuilding("Chapin");
-        this.addBuilding("Tyler");
+        Building chapin = this.addBuilding("Chapin");
+        chapin.addFloor(2);
+        chapin.addFloor(3);
+        chapin.addFloor(4);
+
+        Building tyler = this.addBuilding("Tyler");
+        tyler.addFloor(2);
+        tyler.setKey(2, this.map.get("Hubbard").getFloor(3).getItem());
+        tyler.addFloor(3);
+        tyler.addFloor(4);
 
         Building hubbard = this.addBuilding("Hubbard");
         hubbard.addFloor(2);
+        hubbard.setKey(2, this.map.get("Northrop").getFloor(5).getItem());
         hubbard.setGhost(2, new Ghost("Julia", 
             new Item("chocolate cake", "A delicious looking chocolate cake", true), 
             "Is that... Julia Child?"));
         hubbard.addFloor(3);
+        hubbard.setItem(3, new Item("key", "It's a key", false)); //tyler 2
         hubbard.addFloor(4);
+        hubbard.setItem(4, new Item("living squirrel (abnormal)", 
+            "You think it might be wise to avoid this squirrel", false, false));
 
 
-        this.addBuilding("Comstock");
+        Building comstock = this.addBuilding("Comstock");
+        comstock.addFloor(2);
+        comstock.setKey(2, this.map.get("Seelye").getFloor(2).getItem());
+        comstock.addFloor(3);
+        comstock.addFloor(4);
+
         this.addBuilding("Outside");
-        // initialize the protagonist (z)
-        // create the graph of the locations
-        // 
 
     }
 
