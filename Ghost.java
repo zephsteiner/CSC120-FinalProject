@@ -24,7 +24,7 @@ public class Ghost extends Person {
 
     //methods
     public void examine(){
-        System.out.println(description);
+        System.out.println(this.description);
     }
 
     public void give(Protagonist p){
