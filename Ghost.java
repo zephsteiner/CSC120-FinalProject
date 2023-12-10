@@ -35,22 +35,22 @@ public class Ghost extends Person {
         //smthn
     }
 
-    public void setDialogue(String ghost, String response1, String response2, String ghost1, String ghost2, String response1_1, String response1_2, String response2_1, String response2_2, String getTrinket, String getFucked){
+    public void setDialogue(String g0, String r1, String r2, String g1, String g2, String r1_1, String r1_2, String r2_1, String r2_2, String trinket, String lose){
         ImmutableGraph<String> g = 
         GraphBuilder.directed()
             .<String>immutable()
-            .putEdge(ghost, response1)
-            .putEdge(response1, ghost1)
-            .putEdge(ghost1, response1_1)
-            .putEdge(response1_1, getTrinket)
-            .putEdge(ghost1, response1_2)
-            .putEdge(response1_2, getTrinket)
-            .putEdge(ghost, response2)
-            .putEdge(response2, ghost2)
-            .putEdge(ghost2, response2_1)
-            .putEdge(response2_1, getTrinket)
-            .putEdge(ghost2, response2_2)
-            .putEdge(response2_2, getFucked)
+            .putEdge(g0, r1)
+            .putEdge(r1, g1)
+            .putEdge(g1, r1_1)
+            .putEdge(r1_1, trinket)
+            .putEdge(g1, r1_2)
+            .putEdge(r1_2, trinket)
+            .putEdge(g0, r2)
+            .putEdge(r2, g2)
+            .putEdge(g2, r2_1)
+            .putEdge(r2_1, trinket)
+            .putEdge(g2, r2_2)
+            .putEdge(r2_2, lose)
             .build();
 
         this.dialouge = g;
