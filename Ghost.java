@@ -2,7 +2,8 @@ import com.google.common.graph.*;
 public class Ghost extends Person {
     protected Item item;
     protected String description;
-    protected Graph<String> dialouge; 
+    protected Graph<String> dialouge;
+    protected String greeting;
   
     /** Default constructor */
     public Ghost() {
@@ -32,10 +33,11 @@ public class Ghost extends Person {
     }
 
     public void talk() {
-        //smthn
+        //smnth
     }
 
     public void setDialogue(String g0, String r1, String r2, String g1, String g2, String r1_1, String r1_2, String r2_1, String r2_2, String trinket, String lose){
+        this.greeting = g0;
         ImmutableGraph<String> g = 
         GraphBuilder.directed()
             .<String>immutable()
