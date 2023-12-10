@@ -2,7 +2,7 @@ import com.google.common.graph.*;
 public class Ghost extends Person {
     protected Item item;
     protected String description;
-    protected Graph dialouge; 
+    protected Graph<String> dialouge; 
   
     /** Default constructor */
     public Ghost() {
@@ -24,7 +24,7 @@ public class Ghost extends Person {
 
     //methods
     public void examine(){
-        System.out.println(description);
+        System.out.println(this.description);
     }
 
     public void give(Protagonist p){
