@@ -58,7 +58,7 @@ public class Building extends Location{
             f.description += " You see a " + f.getItem().getName() + ".";
         }
         if (f.getGhost() != null) {
-            f.description += " You see a " + f.getGhost().getDescription() + ".";
+            //f.description += " You see a " + f.getGhost().getDescription() + ".";
         }
     }
 
