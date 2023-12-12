@@ -25,7 +25,7 @@ public class Ghost extends Person {
     }
 
     public String getLine(Integer n){
-        this.dialouge.get(n)
+        return this.dialouge.get(n);
     }
 
     public String getDescription() {
