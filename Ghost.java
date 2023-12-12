@@ -1,9 +1,10 @@
-import com.google.common.graph.*;
+import java.util.Hashtable;
+import java.util.Scanner;
 public class Ghost extends Person {
     protected Item item;
     protected String description;
-    protected Graph<String> dialouge;
-    protected String greeting;
+    protected Hashtable<Integer, String> dialouge;
+    protected Boolean talkedTo = false;
   
     /** Default constructor */
     public Ghost() {
@@ -23,6 +24,10 @@ public class Ghost extends Person {
         return this.item;
     }
 
+    public String getLine(Integer n){
+        this.dialouge.get(n)
+    }
+
     //methods
     public void examine(){
         System.out.println(this.description);
@@ -30,31 +35,83 @@ public class Ghost extends Person {
 
     public void give(Protagonist p){
         p.pickUp(this.item);
+        System.out.println("They hand you " + this.item.getName() + ". " + this.item.getDescription());
     }
 
-    public void talk() {
-        //smnth
+    public void talk(Protagonist p, Scanner s){
+        if(this.talkedTo == true){
+            if(p.inventory.contains(this.item)){
+                System.out.println(this.getLine(11));
+            } else{
+                System.out.println(this.getLine(12));
+            }
+        } else{
+            this.talkA();
+            Integer choiceA = s.nextInt();
+            Boolean checkA = choiceA == 1 || choiceA == 2;
+            if(checkA){
+                this.talkB(choiceA);
+            } else {
+                while(!checkA){
+                    System.out.println("Please respond 1 to choose the first option, or 2 to choose the second.");
+                    choiceA = s.nextInt();
+                    checkA = choiceA == 1 || choiceA == 2;
+                }
+            }
+            Integer choiceB = choiceA + s.nextInt();
+            Boolean checkB = choiceB == 2 || choiceB == 3 || choiceB == 4;
+            if(checkB){
+                this.talkC(choiceB, p);
+            } else {
+                while(!checkB){
+                    System.out.println("Please respond 1 to choose the first option, or 2 to choose the second.");
+                    choiceB = choiceA + s.nextInt();
+                    checkB = choiceB == 2 || choiceB == 3 || choiceB == 4;
+                }
+            }
+        }
+    }
+   
+    private void talkA() {
+        System.out.println(this.getLine(0));
+        System.out.println("What do you say?");
+        System.out.println("1: "+this.getLine(1));
+        System.out.println("2: "+this.getLine(2));
+        System.out.println("Please respond 1 to choose the first option, or 2 to choose the second.");
     }
 
-    public void setDialogue(String g0, String r1, String r2, String g1, String g2, String r1_1, String r1_2, String r2_1, String r2_2, String trinket, String lose){
-        this.greeting = g0;
-        ImmutableGraph<String> g = 
-        GraphBuilder.directed()
-            .<String>immutable()
-            .putEdge(g0, r1)
-            .putEdge(r1, g1)
-            .putEdge(g1, r1_1)
-            .putEdge(r1_1, trinket)
-            .putEdge(g1, r1_2)
-            .putEdge(r1_2, trinket)
-            .putEdge(g0, r2)
-            .putEdge(r2, g2)
-            .putEdge(g2, r2_1)
-            .putEdge(r2_1, trinket)
-            .putEdge(g2, r2_2)
-            .putEdge(r2_2, lose)
-            .build();
+    private void talkB(Integer i){
+        System.out.println(this.getLine(i+2));
+        System.out.println("What do you say?");
+        System.out.println("1: "+this.getLine(i+4));
+        System.out.println("2: "+this.getLine(i+5));
+        System.out.println("Please respond 1 to choose the first option, or 2 to choose the second.");
+    }
 
-        this.dialouge = g;
+    private void talkC(Integer i, Protagonist p){
+        if(i == 2 || i == 3){
+            System.out.println(this.getLine(9));
+            this.give(p);
+        } else if(i == 4){
+            System.out.println(this.getLine(10));
+        }
+        this.talkedTo = true;
+    }
+
+    public void setDialogue(String g0, String r1, String r2, String g1, String g2, String r1_1, String r1_2, String r2_1, String r2_2, String trinket, String lose, String end1, String end2){
+        this.dialouge = new Hashtable<>(13);
+        this.dialouge.put(0, g0);
+        this.dialouge.put(1, r1);
+        this.dialouge.put(2, r2);
+        this.dialouge.put(3, g1);
+        this.dialouge.put(4, g2);
+        this.dialouge.put(5, r1_1);
+        this.dialouge.put(6, r2_1);
+        this.dialouge.put(7, r1_2);
+        this.dialouge.put(8, r2_2);
+        this.dialouge.put(9, trinket);
+        this.dialouge.put(10, lose);
+        this.dialouge.put(11, end1);
+        this.dialouge.put(12, end2);
     }
 }

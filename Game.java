@@ -9,7 +9,7 @@ public class Game {
 
 
     public void enter(Building b, Protagonist p){
-        boolean unlocked = b.getFloor(1).key == null | p.inventory.contains(b.getFloor(1).key);
+        boolean unlocked = b.getFloor(1).key == null || p.inventory.contains(b.getFloor(1).key);
         boolean ground = p.loc.getFloorNum() == 1;
         if(unlocked && ground){
             p.loc = b.getFloor(1);
@@ -61,7 +61,7 @@ public class Game {
         wburn.setItem(1, new Item("key", "It's a key", false)); //northrop 2
         wburn.addFloor(2);
         wburn.setGhost(2, new Ghost("Madeline", 
-            new Item("bowl of guacamole", "Looks tasty. Would pair well with chips", true), 
+            new Item("a bowl of guacamole", "Looks tasty. Would pair well with chips", true), 
             "A girl in her early teens wearing a white dress. This strikes you as rather too on the nose for a ghost."));
         wburn.addFloor(3);
 
@@ -87,7 +87,7 @@ public class Game {
 
         Building sessions = this.addBuilding("Sessions");
         sessions.setGhost(1, new Ghost("John", 
-            new Item("bowl of chips", "Mmm. Crunchy. Do you prefer salsa or guac?", true), 
+            new Item("a bowl of chips", "Mmm. Crunchy. Do you prefer salsa or guac?", true), 
             "He's wearing a soldier's uniform. You think he looks tired."));
         sessions.addFloor(2);
         sessions.setKey(2, this.map.get("Northrop").getFloor(1).getItem());
@@ -108,7 +108,7 @@ public class Game {
         psons.setItem(1, new Item("key", "It's a key", false)); //mhall 3
         psons.addFloor(2);
         psons.setGhost(2, new Ghost("Bugsy", 
-            new Item("water gun", "A small neon green water pistol. It's empty.", true), 
+            new Item("a water gun", "A small neon green water pistol. It's empty.", true), 
             "A tough looking man in a three-piece suit and a hat"));
         psons.addFloor(3);
 
@@ -117,7 +117,7 @@ public class Game {
         northrop.addFloor(2);
         northrop.setKey(2, this.map.get("Washburn").getFloor(1).getItem());
         northrop.setGhost(2, new Ghost("Francine", 
-            new Item("pack of Camel brand cigarettes", "There are a few missing", true), 
+            new Item("a pack of Camel brand cigarettes", "There are a few missing", true), 
             "You can barely make out her form. She creaks when she moves"));
         northrop.addFloor(3);
         northrop.addFloor(4);
@@ -139,7 +139,7 @@ public class Game {
         hubbard.addFloor(2);
         hubbard.setKey(2, this.map.get("Northrop").getFloor(5).getItem());
         hubbard.setGhost(2, new Ghost("Julia", 
-            new Item("chocolate cake", "A delicious looking chocolate cake", true), 
+            new Item("a chocolate cake", "A delicious looking chocolate cake", true), 
             "Is that... Julia Child?"));
         hubbard.addFloor(3);
         hubbard.setItem(3, new Item("key", "It's a key", false)); //tyler 2
