@@ -28,6 +28,10 @@ public class Ghost extends Person {
         this.dialouge.get(n)
     }
 
+    public String getDescription() {
+        return this.description;
+    }
+
     //methods
     public void examine(){
         System.out.println(this.description);
