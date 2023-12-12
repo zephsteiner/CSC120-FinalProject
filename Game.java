@@ -1,9 +1,11 @@
 import java.util.Hashtable;
+import java.util.Scanner;
 
 public class Game {
     protected Protagonist p;
     protected Hashtable<String,Building> map;
     protected Hashtable<Integer,Item> keys;
+    protected StartingGhost lily;
 
 
     public void enter(Building b, Protagonist p){
@@ -50,6 +52,8 @@ public class Game {
         this.keys.put(6, new Item("key", "Holding this key, you have a strange desire to go to the second floor of Tyler", false)); //tyler 2
         this.keys.put(7, new Item("key", "You think this is a key to Mendenhall. But what floor?", false)); //mhall 3
 
+        this.lily = new StartingGhost(new Item("OneCard", "This is your key to the campus", false));
+
         Building seelye =  this.addBuilding("Seeyle");
         seelye.setDescription(1);
         seelye.addFloor(2);
@@ -58,7 +62,7 @@ public class Game {
         seelye.addFloor(3);
         seelye.setDescription(3);
         seelye.addFloor(4);
-        seelye.setGhost(4, new StartingGhost(new Item("OneCard", "This is your key to the campus", false)));
+        seelye.setGhost(4, this.lily);
         seelye.setDescription(4);
         this.p =  new Protagonist(seelye.getFloor(4));
 
@@ -221,28 +225,37 @@ public class Game {
     public void run() {
         System.out.println("Welcome to Smith!");
         System.out.println(this.map.get("Seeyle").getFloor(4).getDescription());
+        System.out.println("You see " + lily.getDescription() + " drifting towards you. When she speaks, it's soft.");
+        System.out.println();
+        System.out.println("Lily: Hey there. I'm planning a ghost party for all the ghosts at Smith. Will you help me? (type 'y' to say yes, 'n' to say no.)");
 
+        Scanner input = new Scanner(System.in);
+        while (input.hasNext()) {
+            if (input.next().equals("y")) {
+                break;
+            }
+            else {
+                System.out.println("Lily: Oh. Bye then.");
+                System.exit(0);
+            }
+        }
+        input.nextLine();
+        System.out.println("AKJFHSDKFH");
+        System.out.println("Great [here's how you play the game lol, go to the second floor]");
 
+        if (input.next().equals("enter")) {
+            System.out.println("What building?");
+        }
+        input.nextLine();
 
-        //scannnerrrrrrr
-        
-        // this should have dialogue and call the explore and add and such methods
-        
+        if (this.map.containsKey(input.next())) {
+            enter(this.map.get(input.next()), this.p);
+            System.out.println(this.p.loc);
+        }
 
-        //exit the building you're currently in
-
-        //list all the options of being outside
-
-        //enter new building
-
-        //explore method (check if there is anything in the location)
-            //from here, go to new location or pick up item or talk to ghost
-
-        //
+        input.close();
     }
     public static void main(String[] args) {
-        // create new game
-        // call the run method
         Game myGame = new Game();
         myGame.run();
     }
