@@ -51,9 +51,15 @@ public class Building extends Location{
         floors.put(floorNum, f);
     }
 
-    public void setDescription(Integer floor, String newDescription){
+    public void setDescription(Integer floor){
         Floor f = this.getFloor(floor);
-        f.description = newDescription;
+        f.description = "You're on floor " + Integer.toString(floor) + " of " + this.name + ".";
+        if (f.getItem() != null) {
+            f.description += "You see a " + f.getItem().getName() + ".";
+        }
+        if (f.getGhost() != null) {
+            f.description += "You see a " + f.getGhost().getDescription() + ".";
+        }
     }
 
     public void setKey(Integer floor, Item newKey){
