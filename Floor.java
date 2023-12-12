@@ -22,6 +22,10 @@ public class Floor extends Location{
         return this.item;
     }
 
+    public Ghost getGhost() {
+        return this.ghost;
+    }
+
     //methods
     public Integer getFloorNum(){
         return this.floorNum;
