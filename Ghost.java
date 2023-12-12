@@ -23,6 +23,10 @@ public class Ghost extends Person {
         return this.item;
     }
 
+    public String getDescription() {
+        return this.description;
+    }
+
     //methods
     public void examine(){
         System.out.println(this.description);
