@@ -26,6 +26,10 @@ public class Floor extends Location{
         return this.ghost;
     }
 
+    public String getDescription() {
+        return this.description;
+    }
+
     //methods
     public Integer getFloorNum(){
         return this.floorNum;

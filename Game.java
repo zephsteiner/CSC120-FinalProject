@@ -1,7 +1,5 @@
 import java.util.Hashtable;
 
-//import com.google.common.graph.*;
-
 public class Game {
     protected Protagonist p;
     protected Hashtable<String,Building> map;
@@ -26,8 +24,6 @@ public class Game {
         enter(b, p);
     }
 
-    //creates a building a it's 1st floor and adds it to the map
-    //all addtional floors need to be made using one of the Building.addFloor() methods
     /**
      * Creates a Building object with one floor and adds it to the game's map.
      * Add more floors with Building.addFloor(...)
@@ -125,7 +121,7 @@ public class Game {
         mhall.setKey(3, this.map.get("Parsons").getFloor(1).getItem());
         mhall.setGhost(3, new Ghost("Pip", 
             new Item("tea things", "Matching teacups, saucers, and an elegant teapot", true), 
-            "pretty young boy but he's almost flying with his excitement. You better ask him what he's got for you, quickly"));
+            "young boy and he's almost flying with his excitement. You better ask him what he's got for you, quickly"));
         mhall.setDescription(3);
 
         Building psons = this.addBuilding("Parsons");
@@ -217,6 +213,11 @@ public class Game {
     }
 
     public void run() {
+        System.out.println("Welcome to Smith!");
+        System.out.println(this.map.get("Seeyle").getFloor(4).getDescription());
+
+
+
         //scannnerrrrrrr
         
         // this should have dialogue and call the explore and add and such methods
@@ -236,9 +237,7 @@ public class Game {
     public static void main(String[] args) {
         // create new game
         // call the run method
-
+        Game myGame = new Game();
+        myGame.run();
     }
 }
-
-//notes: should we label the keys lol
-//i am loving the fact that the large slime jar is, in fact, useable at the party whereas small is not
