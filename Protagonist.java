@@ -9,18 +9,19 @@ public class Protagonist extends Person {
         this.loc = location;
     }
 
-    public void pickUp(Item i) {
+    public String pickUp(Item i) {
+        if (this.inventory.contains(i)) {
+            throw new RuntimeException("You're already holding " + i.getName());
+        }
         this.inventory.add(i);
-        //add check for item already there
+        return i.getDescription();
     }
 
     public void drop(Item i) {
+        if (!this.inventory.contains(i)) {
+            throw new RuntimeException("You don't have" + i.getName());
+        }
         this.inventory.remove(i);
-        //add check
-    }
-
-    public void use(Item i) {
-        //smthn
     }
 
     public String checkInventory() {
