@@ -231,7 +231,7 @@ public class Game {
         mhall.setDescription(1);
         mhall.addFloor(2);
         mhall.setItem(2, new Item("apple", "Goats like these", false));
-        mhall.setGhost(2, new GoatGhost(new Item("key", "This must be the key to the party", true)));
+        mhall.setGhost(2, new GoatGhost(new Item("key", "This must be the key to the party", true), mhall.getFloor(2).getItem()));
         mhall.setDescription(2);
         mhall.addFloor(3);
         mhall.setKey(3, this.keys.get(7));
