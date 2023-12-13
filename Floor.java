@@ -15,15 +15,39 @@ public class Floor extends Location{
     }
 
     public Floor(Integer floorNum, Building building){
-        this("Wow it sure is inside in here", null, null, null, floorNum, building);
+        this("You're somewhere", null, null, null, floorNum, building);
     }
 
     public Item getItem() {
         return this.item;
     }
 
+    public boolean hasItem() {
+        if (!this.item.equals(null)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public Ghost getGhost() {
         return this.ghost;
+    }
+
+    public boolean hasGhost() {
+        if (this.ghost != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean hasKey() {
+        if (this.key != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public String getDescription() {
