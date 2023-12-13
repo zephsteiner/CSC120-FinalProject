@@ -7,34 +7,40 @@ public class Protagonist extends Person {
     public Protagonist(Floor location) {
         super("you");
         this.loc = location;
+        this.inventory = new ArrayList<>();
+    }
+
+    public Floor getLocation() {
+        return this.loc;
     }
 
     public String pickUp(Item i) {
         if (this.inventory.contains(i)) {
             throw new RuntimeException("You're already holding " + i.getName());
         }
+        if (!i.getCanPickUp()) {
+            throw new RuntimeException("You cannot and perhaps should not pick up " + i.getName());
+        }
         this.inventory.add(i);
-        return i.getDescription();
+        return i.getName();
     }
 
     public void drop(Item i) {
         if (!this.inventory.contains(i)) {
-            throw new RuntimeException("You don't have" + i.getName());
+            throw new RuntimeException("You don't have " + i.getName());
         }
         this.inventory.remove(i);
     }
 
-    public String checkInventory() {
-        //do this
-        return "girl help";
+    public void checkInventory() {
+        System.out.println("Inventory:");
+        for (Item i : this.inventory) {
+            System.out.println(" - " + i.getName());
+        }
     }
 
     public String examine(Item i) {
         return i.getDescription();
-    }
-
-    public void explore() {
-        //
     }
 
     public void talk(Person p) {
