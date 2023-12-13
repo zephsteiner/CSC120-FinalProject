@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Hashtable;
 import java.util.Scanner;
 
@@ -6,12 +9,15 @@ public class Game {
     protected Hashtable<String,Building> map;
     protected Hashtable<Integer,Item> keys;
     protected StartingGhost lily;
+    protected ArrayList<String> responses = new ArrayList<String>(
+        Arrays.asList ("enter", "exit", "go down", "go up", "pick up", "check inventory", "examine", "talk", "talk to lily", "help", "lost")
+    );
 
 
     public void enter(Building b, Protagonist p){
-        boolean unlocked = b.getFloor(1).key == null || p.inventory.contains(b.getFloor(1).key);
+        boolean unlocked = (!b.getFloor(1).hasKey() || p.inventory.contains(b.getFloor(1).getKey()));
         boolean ground = p.loc.getFloorNum() == 1;
-        if(unlocked && ground){
+        if(unlocked && ground) {
             p.loc = b.getFloor(1);
             b.getFloor(1).printDescription();
         } else if(!unlocked && ground){
@@ -39,6 +45,20 @@ public class Game {
         return b;
     }
 
+    private void printResponses() {
+        System.out.println("Valid commands:");
+        for (String s : this.responses) {
+            System.out.println(" - " + s);
+        }
+        System.out.println("If you feel like you're done, go back to the 4th floor of Seelye and 'talk to lily'");
+    }
+
+    private void printMap() {
+        System.out.println("Smith's buildings:");
+        for (String s : Collections.list(this.map.keys())) {
+            System.out.println(" - " + s);
+        }
+    }
 
     public Game() {
         // create all the dialogue (m)
@@ -54,7 +74,7 @@ public class Game {
 
         this.lily = new StartingGhost(new Item("OneCard", "This is your key to the campus", false));
 
-        Building seelye =  this.addBuilding("Seeyle");
+        Building seelye =  this.addBuilding("Seelye");
         seelye.setDescription(1);
         seelye.addFloor(2);
         seelye.setItem(2, this.keys.get(1));
@@ -63,7 +83,7 @@ public class Game {
         seelye.setDescription(3);
         seelye.addFloor(4);
         seelye.setGhost(4, this.lily);
-        seelye.setDescription(4);
+        seelye.setDescription(4, "You're on floor 4 of Seelye. This is where Lily lives.", true);
         this.p =  new Protagonist(seelye.getFloor(4));
 
         Building wburn = this.addBuilding("Washburn");
@@ -211,22 +231,128 @@ public class Game {
         comstock.setKey(2, this.keys.get(1));
         comstock.setGhost(2, 
             new Ghost("Gloria", new Item("candle", "It's not lit", true), 
-            "old woman. She looks mad. You shoudl probably talk to her sooner rather than later and get out of her way"));
+            "old woman. She looks mad. You should probably talk to her sooner rather than later and get out of her way"));
         comstock.setDescription(2);
         comstock.addFloor(3);
         comstock.setDescription(3);
         comstock.addFloor(4);
         comstock.setDescription(4);
 
-        this.addBuilding("Outside");
+        Building outside = this.addBuilding("Outside");
+        outside.setDescription(1, "You're outside. Try to 'enter' a building.", true);
+    }
+
+    public void move(Scanner input) {
+        String next = input.nextLine();
+        boolean found = false;
+        for (int r = 0; r < this.responses.size(); r++) {
+            if (this.responses.get(r).equals(next)) {
+                found = true;
+            }
+        }
+        if (found) {
+            if (next.equals("go down")) {
+                try {
+                    this.p.loc.goDown(p);
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            }
+            if (next.equals("go up")) {
+                try {
+                    this.p.loc.goUp(p);
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            }
+            if (next.equals("enter")) {
+                this.printMap();
+                System.out.println("What building?");
+                String build = input.nextLine();
+                if (this.map.containsKey(build)) {
+                    try {
+                    enter(this.map.get(build), this.p);
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                } else {
+                    System.out.println("Not a valid building. Try to enter again");
+                }
+            }
+            if (next.equals("exit")) {
+                try {
+                    if (this.p.getLocation().equals(this.map.get("Outside").getFloor(1))) {
+                        System.out.println("Nothing to exit. You're already outside.");
+                    } else {
+                        enter("Outside", this.p);
+                    }
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            }
+            if (next.equals("pick up")) {
+                try {
+                    System.out.println("Added " + this.p.pickUp(this.p.getLocation().getItem()) + " to inventory");
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            }
+            if (next.equals("check inventory")) {
+                try {
+                    this.p.checkInventory();
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            }
+            if (next.equals("examine")) {
+                this.p.checkInventory();
+                System.out.println("What would you like to examine?");
+                String item = input.nextLine();
+                boolean itemFound = false;
+                Item toExamine = null;
+                for (int i = 0; i < this.p.inventory.size(); i++) {
+                    toExamine = this.p.inventory.get(i);
+                    if (toExamine.getName().equals(item)) {
+                        itemFound = true;
+                    }
+                }
+                if (itemFound) {
+                    System.out.println(toExamine.getDescription());
+                } else {
+                    System.out.println("Not a valid item. Try to examine again");
+                }
+            }
+            if (next.equals("talk")) {
+                try {
+                    this.p.getLocation().getGhost(); //add talk methods here
+                } catch (Exception e) {
+                    System.out.println("There isn't anyone to talk to");
+                }
+                System.out.println("talk");
+            }
+            if (next.equals("help")) {
+                this.printResponses();
+            }
+            if (next.equals("lost")) {
+                try {
+                    this.p.getLocation().printDescription();
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            }
+            if (next.equals("talk to lily")) {
+                System.out.println("talk 2 lily");
+                //game end goes here
+            }
+        } else {
+            System.out.println("Invalid command. Try a valid command instead");;
+        }
 
     }
 
     public void run() {
         System.out.println("Welcome to Smith!");
-        System.out.println(this.map.get("Seeyle").getFloor(4).getDescription());
         System.out.println("You see " + lily.getDescription() + " drifting towards you. When she speaks, it's soft.");
-        System.out.println();
         System.out.println("Lily: Hey there. I'm planning a ghost party for all the ghosts at Smith. Will you help me? (type 'y' to say yes, 'n' to say no.)");
 
         Scanner input = new Scanner(System.in);
@@ -242,15 +368,10 @@ public class Game {
         input.nextLine();
         System.out.println("AKJFHSDKFH");
         System.out.println("Great [here's how you play the game lol, go to the second floor]");
-
-        if (input.next().equals("enter")) {
-            System.out.println("What building?");
-        }
-        input.nextLine();
-
-        if (this.map.containsKey(input.next())) {
-            enter(this.map.get(input.next()), this.p);
-            System.out.println(this.p.loc);
+        
+        boolean play = true;
+        while (play) {
+            this.move(input);
         }
 
         input.close();
