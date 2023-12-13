@@ -45,9 +45,9 @@ public class Ghost extends Person {
     public void talk(Protagonist p, Scanner s){
         if(this.talkedTo == true){
             if(p.inventory.contains(this.item)){
-                System.out.println(this.getLine(11));
+                System.out.println(this.name + ": " + this.getLine(11));
             } else{
-                System.out.println(this.getLine(12));
+                System.out.println(this.name + ": " + this.getLine(12));
             }
         } else{
             this.talkA();
@@ -77,7 +77,7 @@ public class Ghost extends Person {
     }
    
     private void talkA() {
-        System.out.println(this.getLine(0));
+        System.out.println(this.name + ": " + this.getLine(0));
         System.out.println("What do you say?");
         System.out.println("1: "+this.getLine(1));
         System.out.println("2: "+this.getLine(2));
@@ -85,7 +85,7 @@ public class Ghost extends Person {
     }
 
     private void talkB(Integer i){
-        System.out.println(this.getLine(i+2));
+        System.out.println(this.name + ": " + this.getLine(i+2));
         System.out.println("What do you say?");
         System.out.println("1: "+this.getLine(i+4));
         System.out.println("2: "+this.getLine(i+6));
@@ -94,10 +94,10 @@ public class Ghost extends Person {
 
     private void talkC(Integer i, Protagonist p){
         if(i == 2 || i == 3){
-            System.out.println(this.getLine(9));
+            System.out.println(this.name + ": " + this.getLine(9));
             this.give(p);
         } else if(i == 4){
-            System.out.println(this.getLine(10));
+            System.out.println(this.name + ": " + this.getLine(10));
         }
         this.talkedTo = true;
     }
