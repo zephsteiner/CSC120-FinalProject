@@ -7,7 +7,7 @@ public class StartingGhost extends Ghost {
     );
 
     public StartingGhost(Item item) {
-        super("Lily", item, "a spectral woman in her mid-thirties");
+        super("Lily", item, "spectral woman in her mid-thirties");
         //set these values
     }
 }
