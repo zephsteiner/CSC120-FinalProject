@@ -32,7 +32,11 @@ public class Building extends Location{
         Floor f = this.getFloor(floor);
         f.description = "You're on floor " + Integer.toString(floor) + " of " + this.name + ".";
         if (f.getItem() != null) {
-            f.description += " You see a " + f.getItem().getName() + ".";
+            if (f.getItem().getName().equals("key")){
+                f.description += " You see a " + f.getItem().getName() + ". " + f.getItem().getDescription() + ".";
+            } else{
+                f.description += " You see a " + f.getItem().getName() + ".";
+            }
         }
         if (f.getGhost() != null) {
             f.description += " You see a " + f.getGhost().getDescription() + ".";

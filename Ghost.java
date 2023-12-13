@@ -88,7 +88,7 @@ public class Ghost extends Person {
         System.out.println(this.getLine(i+2));
         System.out.println("What do you say?");
         System.out.println("1: "+this.getLine(i+4));
-        System.out.println("2: "+this.getLine(i+5));
+        System.out.println("2: "+this.getLine(i+6));
         System.out.println("Please respond 1 to choose the first option, or 2 to choose the second.");
     }
 
