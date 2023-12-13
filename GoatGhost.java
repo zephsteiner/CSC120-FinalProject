@@ -45,6 +45,8 @@ public class GoatGhost extends Ghost{
             System.out.println("Wow this goat sure is loud! Maybe an apple would quiet it down. Give the goat your apple? (type 'y' to say yes, 'n' to say no.)");
             while (s.hasNext()) {
                 if (s.next().equals("y")) {
+                    audio.pause();
+                    this.give(p);
                     break;
                 }
                 else {
