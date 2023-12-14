@@ -86,7 +86,7 @@ public class GoatGhost extends Ghost{
                 System.out.println("Wow this goat sure is loud! Maybe you could find something to quiet it down. I hear goats love apples.");
             }
         } else {
-            System.out.println("The goat is to busy eatting the apple to talk to you.");
+            System.out.println("The goat is too busy eatting the apple to talk to you.");
         }
     }
 }
