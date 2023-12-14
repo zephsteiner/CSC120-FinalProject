@@ -509,8 +509,8 @@ public class Game {
                     }
                 }
             } 
-            if (!found) {
-                System.out.println("Invalid command. Try a valid command instead");;
+            else {
+                System.out.println("Invalid command. Try a valid command instead");
             }
         }
         input.close();
