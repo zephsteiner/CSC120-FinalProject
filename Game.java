@@ -380,8 +380,7 @@ public class Game {
             }
         }
         input.nextLine();
-        System.out.println("AKJFHSDKFH");
-        System.out.println("Great [here's how you play the game lol, go to the second floor]");
+        System.out.println("Lily: Great! Try going down to the second floor. I think there might be an item you'll need there. Say 'help' if you get stuck.");
         
         boolean play = true;
         while (play) {
