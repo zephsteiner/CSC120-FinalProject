@@ -89,10 +89,12 @@ public class Ghost extends Person {
                 while(!checkA){
                     System.out.println("Please respond 1 to choose the first option, or 2 to choose the second.");
                     choiceA = s.nextInt();
+                    s.nextLine();
                     checkA = choiceA == 1 || choiceA == 2;
                 }
             }
             Integer choiceB = choiceA + s.nextInt();
+            s.nextLine();
             Boolean checkB = choiceB == 2 || choiceB == 3 || choiceB == 4;
             if(checkB){
                 this.talkC(choiceB, p);
