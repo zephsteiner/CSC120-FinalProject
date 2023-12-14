@@ -1,9 +1,17 @@
 import java.util.Hashtable;
 import java.util.Scanner;
+
 public class Ghost extends Person {
+    /** Item the ghost is holding */
     protected Item item;
+
+    /** description of the Ghost */
     protected String description;
+
+    /** stores the Ghost's dialogue options */
     protected Hashtable<Integer, String> dialouge;
+
+    /** Has the Protagonist talked to this Ghost? */
     protected Boolean talkedTo = false;
   
     /** Default constructor */
@@ -13,35 +21,57 @@ public class Ghost extends Person {
         this.description = "<YOU CAN'T SEE GHOSTS>";
     }
 
+    /**
+     * Ghost constructor
+     * @param name name of Ghost
+     * @param item Item the Ghost holds
+     * @param description description of the Ghost
+     */
     public Ghost(String name, Item item, String description){
         super(name);
         this.item = item;
         this.description = description;
     }
 
-    //accessors
+    /**
+     * Gets the Item a Ghost holds
+     * @return the Item a Ghost holds
+     */
     public Item getItem(){
         return this.item;
     }
 
+    /**
+     * Gets a specified line of dialogue from the Ghost
+     * @param n Integer key of the desired line
+     * @return the desired line
+     */
     public String getLine(Integer n){
         return this.dialouge.get(n);
     }
 
+    /**
+     * Gets the description of a Ghost
+     * @return the description
+     */
     public String getDescription() {
         return this.description;
     }
 
-    //methods
-    public void examine(){
-        System.out.println(this.description);
-    }
-
+    /**
+     * Assign this Ghost's Item to the Protagonist's inventory
+     * @param p Protagonist to assign
+     */
     public void give(Protagonist p){
         p.pickUp(this.item);
         System.out.println("They hand you " + this.item.getName() + ". " + this.item.getDescription());
     }
 
+    /**
+     * Accesses the Hashtable storing the dialogue to print specified lines based on the player's input
+     * @param p Protagonist to talk to
+     * @param s Scanner to get the player's input
+     */
     public void talk(Protagonist p, Scanner s){
         if(this.talkedTo == true){
             if(p.inventory.contains(this.item)){
@@ -76,6 +106,9 @@ public class Ghost extends Person {
         }
     }
    
+    /**
+     * 
+     */
     private void talkA() {
         System.out.println(this.name + ": " + this.getLine(0));
         System.out.println("What do you say?");
@@ -84,6 +117,10 @@ public class Ghost extends Person {
         System.out.println("Please respond 1 to choose the first option, or 2 to choose the second.");
     }
 
+    /**
+     * 
+     * @param i
+     */
     private void talkB(Integer i){
         System.out.println(this.name + ": " + this.getLine(i+2));
         System.out.println("What do you say?");
@@ -92,6 +129,11 @@ public class Ghost extends Person {
         System.out.println("Please respond 1 to choose the first option, or 2 to choose the second.");
     }
 
+    /**
+     * 
+     * @param i
+     * @param p Protagonist to speak to
+     */
     private void talkC(Integer i, Protagonist p){
         if(i == 2 || i == 3){
             System.out.println(this.name + ": " + this.getLine(9));
@@ -102,6 +144,22 @@ public class Ghost extends Person {
         this.talkedTo = true;
     }
 
+    /**
+     * Sets the dialogue of this Ghost
+     * @param g0
+     * @param r1
+     * @param r2
+     * @param g1
+     * @param g2
+     * @param r1_1
+     * @param r1_2
+     * @param r2_1
+     * @param r2_2
+     * @param trinket
+     * @param lose
+     * @param end1
+     * @param end2
+     */
     public void setDialogue(String g0, String r1, String r2, String g1, String g2, String r1_1, String r1_2, String r2_1, String r2_2, String trinket, String lose, String end1, String end2){
         this.dialouge = new Hashtable<>(13);
         this.dialouge.put(0, g0);
