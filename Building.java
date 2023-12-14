@@ -1,6 +1,5 @@
 import java.util.Hashtable;
 
-
 public class Building extends Location{
     /** Hashtable of building floors with Integer floor number key for the respective Floor object */
     private Hashtable< Integer, Floor> floors;
@@ -52,9 +51,9 @@ public class Building extends Location{
     }
 
     /**
-     * Sets a default description of 
-     * @param floor
-     * @return
+     * Sets a default description of the floor number and the building with any items or ghosts also on the floor
+     * @param floor the Floor to set the description of
+     * @return the description that was set
      */
     public String setDescription(Integer floor){
         Floor f = this.getFloor(floor);
@@ -68,7 +67,14 @@ public class Building extends Location{
         return f.description;
     }
 
-    public void setDescription(Integer floor, String more, boolean override) {
+    /**
+     * Sets a custom description of a floor
+     * @param floor the Floor to set the description of
+     * @param more the custom description
+     * @param override true if the desired outcome is only the custom description
+     * @return the description that was set
+     */
+    public String setDescription(Integer floor, String more, boolean override) {
         Floor f = this.getFloor(floor);
         // f.description = "You're on floor " + Integer.toString(floor) + " of " + this.name + "." + more;
         if (override) {
@@ -76,18 +82,34 @@ public class Building extends Location{
         } else {
             f.description = this.setDescription(floor) + " " + more;
         }
+        return f.description;
     }
 
+    /**
+     * Sets a key to a specific Floor of the Buidling
+     * @param floor the floor to assign the key to
+     * @param newKey the key to assign
+     */
     public void setKey(Integer floor, Item newKey){
         Floor f = this.getFloor(floor);
         f.key = newKey;
     }
 
+    /**
+     * Sets a Ghost to a specific Floor of the Buidling
+     * @param floor the floor to assign the Ghost to
+     * @param newGhost the Ghost to assign
+     */
     public void setGhost(Integer floor, Ghost newGhost){
         Floor f = this.getFloor(floor);
         f.ghost = newGhost;
     }
 
+    /**
+     * Sets a key to a specific Floor of the Buidling
+     * @param floor the floor to assign the Item to
+     * @param newItem the Item to assign
+     */
     public void setItem(Integer floor, Item newItem){
         Floor f = this.getFloor(floor);
         f.item = newItem;
