@@ -19,6 +19,11 @@ public class Game {
 
     /** collection of valid inputs by the user */
     protected ArrayList<String> responses = new ArrayList<String>(
+        Arrays.asList ("enter", "exit", "go down", "go up", "pick up", "check inventory", "examine", "talk", "talk to lily", "help", "lost", "y", "n", "1", "2")
+    );
+
+     /** collection of valid inputs by the user */
+    protected ArrayList<String> commands = new ArrayList<String>(
         Arrays.asList ("enter", "exit", "go down", "go up", "pick up", "check inventory", "examine", "talk", "talk to lily", "help", "lost")
     );
 
@@ -70,7 +75,7 @@ public class Game {
      */
     private void printResponses() {
         System.out.println("Valid commands:");
-        for (String s : this.responses) {
+        for (String s : this.commands) {
             System.out.println(" - " + s);
         }
         System.out.println("If you feel like you're done, go back to the 4th floor of Seelye and 'talk to lily'");
@@ -507,9 +512,7 @@ public class Game {
             } else {
                 System.out.println("Invalid command. Try a valid command instead");;
             }
-
         }
-
         input.close();
     }
     public static void main(String[] args) {
