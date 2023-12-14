@@ -107,7 +107,7 @@ public class Ghost extends Person {
     }
    
     /**
-     * 
+     * Acesses and prints the first section of dialouge from the hashtable
      */
     private void talkA() {
         System.out.println(this.name + ": " + this.getLine(0));
@@ -118,8 +118,8 @@ public class Ghost extends Person {
     }
 
     /**
-     * 
-     * @param i
+     * Acesses and prints the middle section of dialouge from the hashtable based on the users chosen response from the first section
+     * @param i numerical represetation of the users chosen reponse from the first section of dialouge
      */
     private void talkB(Integer i){
         System.out.println(this.name + ": " + this.getLine(i+2));
@@ -130,8 +130,8 @@ public class Ghost extends Person {
     }
 
     /**
-     * 
-     * @param i
+     * Acesses and prints the final section of dialouge from the hashtable based on the users chosen response from the pervious sections
+     * @param i numerical represetation of the users chosen reponse from the previous sections of dialouge
      * @param p Protagonist to speak to
      */
     private void talkC(Integer i, Protagonist p){

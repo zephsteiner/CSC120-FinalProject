@@ -24,7 +24,7 @@ public class GoatGhost extends Ghost{
         Clip clip;
 
         /**
-         * 
+         * Readys the audio file goatSound.mp3 to be accesed through clip
          */
         public void setFile(){
             try {
@@ -33,12 +33,12 @@ public class GoatGhost extends Ghost{
                 clip = AudioSystem.getClip();
                 clip.open(sound);  
             } catch (Exception e) {
-
+                System.out.println(e.getMessage());
             }
         }
 
         /**
-         * 
+         * plays clip
          */
         public void play(){
             clip.setFramePosition(0);
@@ -46,7 +46,7 @@ public class GoatGhost extends Ghost{
         }
 
         /**
-         * 
+         * stops clip from playing
          */
         public void stop(){
             clip.setFramePosition(clip.getFrameLength());
