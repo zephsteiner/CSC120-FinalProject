@@ -509,7 +509,7 @@ public class Game {
                     }
                 }
             } 
-            if (!found) {
+            else if (!found) {
                 System.out.println("Invalid command. Try a valid command instead");;
             }
         }
