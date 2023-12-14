@@ -6,16 +6,26 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
 public class GoatGhost extends Ghost{
+    /** what the GoatGhost needs to shut up */
     Item apple;
     
+    /**
+     * GoatGhost constructor
+     * @param item Item the GoatGhost holds
+     * @param apple what the GoatGhost needs to be quiet
+     */
     public GoatGhost(Item item, Item apple) {
         super("This is a goat", item, "This is a goat");
         this.apple = apple;
     }
 
     public class Audio{
+        /** clip to play */
         Clip clip;
 
+        /**
+         * 
+         */
         public void setFile(){
             try {
                 File f = new File("goatSound.mp3");
@@ -27,16 +37,27 @@ public class GoatGhost extends Ghost{
             }
         }
 
+        /**
+         * 
+         */
         public void play(){
             clip.setFramePosition(0);
             clip.start();
         }
 
+        /**
+         * 
+         */
         public void pause(){
             clip.setFramePosition(clip.getFrameLength());
         }
     }
 
+    /**
+     * Prints specified lines based on the player's input
+     * @param p Protagonist to talk to
+     * @param s Scanner to parse the player's input
+     */
     public void talk(Protagonist p, Scanner s) {
         Audio audio = new Audio();
         audio.setFile();
