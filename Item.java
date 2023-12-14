@@ -1,7 +1,14 @@
 public class Item {
+    /** name of this Item */
     private String name;
+
+    /** description of this Item */
     private String description;
+
+    /** Do you need this Item to win? */
     private boolean helpWin;
+
+    /** Can you pick this Item up? */
     private boolean canPickUp = true;
 
     /**
