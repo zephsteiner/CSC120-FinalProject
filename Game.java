@@ -97,13 +97,13 @@ public class Game {
     public Game() {
         this.map = new Hashtable<>();
         this.keys = new Hashtable<>();
-        this.keys.put(1, new Item("key", "This key says 'Comstock' on it", false)); //comstock 2
-        this.keys.put(2, new Item("key", "This key has a tag that says 'Northrop second floor'", false)); //northrop 2
-        this.keys.put(3, new Item("key", "It says 'Sessions'", false)); //sessions 2
-        this.keys.put(4, new Item("key", "This looks like a key to McConnell", false)); //mcconnell 3
-        this.keys.put(5,  new Item("key", "This key has 'Hubbard' energy", false)); //hubbard 2
-        this.keys.put(6, new Item("key", "Holding this key, you have a strange desire to go to the second floor of Tyler", false)); //tyler 2
-        this.keys.put(7, new Item("key", "You think this is a key to Mendenhall. But what floor?", false)); //mhall 3
+        this.keys.put(1, new Item("key 1", "This key says 'Comstock' on it", false)); //comstock 2
+        this.keys.put(2, new Item("key 2", "This key has a tag that says 'Northrop second floor'", false)); //northrop 2
+        this.keys.put(3, new Item("key 3", "It says 'Sessions'", false)); //sessions 2
+        this.keys.put(4, new Item("key 4", "This looks like a key to McConnell", false)); //mcconnell 3
+        this.keys.put(5, new Item("key 5", "This key has 'Hubbard' energy", false)); //hubbard 2
+        this.keys.put(6, new Item("key 6", "Holding this key, you have a strange desire to go to the second floor of Tyler", false)); //tyler 2
+        this.keys.put(7, new Item("key 7", "You think this is a key to Mendenhall. But what floor?", false)); //mhall 3
 
         this.lily = new StartingGhost();
 
