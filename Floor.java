@@ -23,7 +23,7 @@ public class Floor extends Location{
     }
 
     public boolean hasItem() {
-        if (!this.item.equals(null)) {
+        if (this.item != null) {
             return true;
         } else {
             return false;
