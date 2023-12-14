@@ -17,6 +17,7 @@ public class GoatGhost extends Ghost{
     public GoatGhost(Item item, Item apple) {
         super("This is a goat", item, "This is a goat");
         this.apple = apple;
+        //this.talkedTo = false;
     }
 
     public class Audio{
@@ -24,11 +25,11 @@ public class GoatGhost extends Ghost{
         Clip clip;
 
         /**
-         * Readys the audio file goatSound.mp3 to be accesed through clip
+         * Readys the audio file goatSound.wav to be accesed through clip
          */
         public void setFile(){
             try {
-                File f = new File("goatSound.mp3");
+                File f = new File("goatSound.wav");
                 AudioInputStream sound = AudioSystem.getAudioInputStream(f);
                 clip = AudioSystem.getClip();
                 clip.open(sound);  
@@ -46,10 +47,11 @@ public class GoatGhost extends Ghost{
         }
 
         /**
-         * stops clip from playing
+         * stops playing clip
          */
         public void stop(){
-            clip.setFramePosition(clip.getFrameLength());
+            clip.stop();
+            clip.flush();
         }
     }
 
@@ -61,24 +63,30 @@ public class GoatGhost extends Ghost{
     public void talk(Protagonist p, Scanner s) {
         Audio audio = new Audio();
         audio.setFile();
-        if (p.inventory.contains(this.apple)) {
-            audio.play();
-            System.out.println("Wow this goat sure is loud! Maybe an apple would quiet it down. Give the goat your apple? (type 'y' to say yes, 'n' to say no.)");
-            while (s.hasNext()) {
-                if (s.next().equals("y")) {
-                    audio.stop();
-                    this.give(p);
-                    p.inventory.remove(this.apple);
-                    break;
-                }
-                else {
+        if(talkedTo == false){
+            if (p.inventory.contains(this.apple)) {
+                audio.stop();
+                audio.play();
+                System.out.println("Wow this goat sure is loud! Maybe an apple would quiet it down. Give the goat your apple? (type 'y' to say yes, 'n' to say no.)");
+                while (s.hasNext()) {
+                    if (s.next().equals("y")) {
+                        audio.stop();
+                        this.give(p);
+                        p.inventory.remove(this.apple);
+                        this.talkedTo = true;
+                        break;
+                    } else {
                     System.out.println("It's almost like music. Loud, bad, never ending music.");
+                    audio.stop();
                     audio.play();
+                    }
                 }
+            } else {
+                audio.play();
+                System.out.println("Wow this goat sure is loud! Maybe you could find something to quiet it down. I hear goats love apples.");
             }
         } else {
-            audio.play();
-            System.out.println("Wow this goat sure is loud! Maybe you could find something to quiet it down. I hear goats love apples.");
+            System.out.println("The goat is to busy eatting the apple to talk to you.");
         }
     }
 }
