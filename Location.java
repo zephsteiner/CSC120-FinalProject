@@ -1,28 +1,50 @@
 public class Location {
+    /** name of this Location */
     protected String name;
+
+    /** description of this Location */
     protected String description;
+
+    /** key to this Location */
     protected Item key;
 
+    /**
+     * Default Location constructor
+     */
     public Location(){
         this.name = "<NAME UNKOWN>";
         this.description = "You're somewhere, all right.";
     }
 
+    /**
+     * Location constructor with name
+     * @param name name of Location
+     */
     public Location(String name) {
         this();
         this.name = name;
     }
 
-    //accessors
+    /**
+     * Gets the name of this Location
+     * @return name
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * Gets the key to this location
+     * @return the key
+     */
     public Item getKey() {
         return this.key;
     }
 
-    //methods
+    /**
+     * Prints the description of this Location if the Protagonist holds this key
+     * @param p the player of this game
+     */
     public void printDescription(Protagonist p){
         if(this.key == null){
            System.out.println(this.description); 
@@ -32,10 +54,11 @@ public class Location {
         } else{
             throw new RuntimeException(this.name + "is locked!");
         }
-        //add check for if the location has a key in the first place
-        //maybe this should be called unlock?
     }
 
+    /**
+     * Prints the description of this Location
+     */
     public void printDescription(){
         System.out.println(this.description);
     }
