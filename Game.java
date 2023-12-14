@@ -474,7 +474,6 @@ public class Game {
                     } catch (Exception e) {
                         System.out.println("There isn't anyone to talk to");
                     }
-                    //System.out.println("talk");
                 }
                 if (next.equals("help")) {
                     this.printResponses();
