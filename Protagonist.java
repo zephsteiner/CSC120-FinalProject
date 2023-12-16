@@ -47,6 +47,9 @@ public class Protagonist extends Person {
     public void checkInventory() {
         System.out.println("Inventory:");
         for (Item i : this.inventory) {
+            if (i.getHelpWin()) {
+                System.out.println(" - " + i.getName() + "(for party)");
+            }
             System.out.println(" - " + i.getName());
         }
     }
