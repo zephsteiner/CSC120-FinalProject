@@ -63,8 +63,8 @@ public class Ghost extends Person {
      * @param p Protagonist to assign
      */
     public void give(Protagonist p){
-        p.pickUp(this.item);
         System.out.println("They hand you " + this.item.getName() + ". " + this.item.getDescription());
+        System.out.println("Added " + p.pickUp(this.item) + " to inventory");
     }
 
     /**
