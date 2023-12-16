@@ -15,9 +15,8 @@ public class GoatGhost extends Ghost{
      * @param apple what the GoatGhost needs to be quiet
      */
     public GoatGhost(Item item, Item apple) {
-        super("This is a goat", item, "This is a goat");
+        super("Goat", item, "goat. This is a goat.");
         this.apple = apple;
-        //this.talkedTo = false;
     }
 
     public class Audio{
@@ -25,7 +24,7 @@ public class GoatGhost extends Ghost{
         Clip clip;
 
         /**
-         * Readys the audio file goatSound.wav to be accesed through clip
+         * Readies the audio file goatSound.wav to be accesed through clip
          */
         public void setFile(){
             try {
