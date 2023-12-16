@@ -264,7 +264,7 @@ public class Game {
         mhall.setDescription(1);
         mhall.addFloor(2);
         mhall.setItem(2, new Item("apple", "Goats like these", false));
-        mhall.setGhost(2, new GoatGhost(new Item("key", "This must be the key to the party", true), mhall.getFloor(2).getItem()));
+        mhall.setGhost(2, new GoatGhost(new Item("very large key", "This must be the key to the party", true), mhall.getFloor(2).getItem()));
         mhall.setDescription(2);
         mhall.addFloor(3);
         mhall.setKey(3, this.keys.get(7));
@@ -371,7 +371,7 @@ public class Game {
      */
     public void run() {
         System.out.println("Welcome to Smith!");
-        System.out.println("You see " + lily.getDescription() + " drifting towards you. When she speaks, it's soft.");
+        System.out.println("You see " + this.lily.getDescription() + " drifting towards you. When she speaks, it's soft.");
         System.out.println("Lily: Hey there. I'm planning a ghost party for all the ghosts at Smith. Will you help me? (type 'y' to say yes, 'n' to say no.)");
 
         Scanner input = new Scanner(System.in);
@@ -385,7 +385,10 @@ public class Game {
             }
         }
         input.nextLine();
-        System.out.println("Lily: Great! Try going down to the second floor. I think there might be an item you'll need there. Say 'help' if you get stuck.");
+        System.out.println("Lily: Great! We need guests and we need at least 8 semi-classic party items. I think we can kill two birds with one stone if you go invite my ghost friends - they should all have something we can use.");
+        System.out.println("Lily: Try going down to the second floor. I think there might be an item you'll need there. Say 'help' if you get stuck.");
+        System.out.println("Lily: Oh, I almost forgot! Here's your key to the campus.");
+        System.out.println("Added " + this.p.pickUp(this.lily.getItem()) + " to inventory");
         
         boolean play = true;
         while (play) {
@@ -470,7 +473,7 @@ public class Game {
                 }
                 if (next.equals("talk")) {
                     try {
-                        this.p.getLocation().getGhost().talk(p, input); //add talk methods here
+                        this.p.getLocation().getGhost().talk(p, input);
                     } catch (Exception e) {
                         System.out.println("There isn't anyone to talk to");
                     }
@@ -493,18 +496,31 @@ public class Game {
                         }
                     }
                     boolean canWin = (winItems >= 8);
+                    boolean hasKey = false;
+                    for (Item i : this.p.inventory) {
+                        if (i.equals(this.map.get("Mendenhall").getFloor(2).getGhost().getItem())) {
+                            hasKey = true;
+                        }
+                    }
                     boolean isInSeelye = false;
                     if (this.p.getLocation().equals(this.map.get("Seelye").getFloor(4))) {
                         isInSeelye = true;
                     }
-                    if (canWin && isInSeelye) {
-                        System.out.println("You win!");
+                    if (canWin && isInSeelye && hasKey) {
+                        System.out.println("Lily: Oh, thank you for getting all this and for inviting everyone! I'm so excited for this party.");
+                        System.out.println("Lily goes over to a door and uses the goat's key to unlock it. The two of you set up the items you brought and wait for the ghosts to arrive.");
+                        System.out.println("You see all your new friends slowly trickle in. (Some phase through the walls and floor. It is a little scary every time it happens.)");
+                        System.out.println("Eventually everyone arrives and you all have a wonderful time dancing and socializing the night away.");
+                        System.out.println("---------------------");
+                        System.out.println("The end!");
                         play = false;
                     } else {
-                        if (isInSeelye) {
+                        if (!isInSeelye) {
+                            System.out.println("Lily isn't here");
+                        } else if (!canWin) {
                             System.out.println("Lily: Ah, I need a few more items.");
-                        } else {
-                            System.out.println("Lily isn't here!");
+                        } else if (!hasKey){
+                            System.out.println("Lily: We're still locked out of the party room. I think it might be in Mendenhall.");
                         }
                     }
                 }
