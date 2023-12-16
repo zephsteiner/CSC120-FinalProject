@@ -15,7 +15,7 @@ public class GoatGhost extends Ghost{
      * @param apple what the GoatGhost needs to be quiet
      */
     public GoatGhost(Item item, Item apple) {
-        super("Goat", item, "goat. This is a goat.");
+        super("Goat", item, "goat. This is a goat");
         this.apple = apple;
     }
 
@@ -68,7 +68,7 @@ public class GoatGhost extends Ghost{
                 audio.play();
                 System.out.println("Wow this goat sure is loud! Maybe an apple would quiet it down. Give the goat your apple? (type 'y' to say yes, 'n' to say no.)");
                 while (s.hasNext()) {
-                    if (s.next().equals("y")) {
+                    if (s.nextLine().equals("y")) {
                         audio.stop();
                         this.give(p);
                         p.inventory.remove(this.apple);
