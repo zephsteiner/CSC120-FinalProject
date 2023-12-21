@@ -17,6 +17,4 @@ lost -> to see the player's location if you forget what building/floor you're on
 
 # SPOILER ALERT
 
-If your game includes challenges that must be overcome to win, also list them below.
-
 To beat the game, you need to speak to at least 8 ghosts and procure their items, including the goat ghost in Mendenhall. You also need to collect at least one key, as only seven ghosts are not behind locked doors. 
